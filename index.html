@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Three Months Baby! ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7b2cbf 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Parallax Background */
+        .parallax-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+        }
+        
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e, #ffb3ba);
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        .progress-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 50px;
+            z-index: 1001;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .progress-message.show {
+            opacity: 1;
+        }
+        
+        /* Music Visualizer */
+        .visualizer-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        
+        .visualizer {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .bar {
+            width: 4px;
+            background: linear-gradient(to top, #ff6b6b, #ff8e8e);
+            border-radius: 2px;
+            animation: pulse 0.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            to { height: 40px; }
+        }
+        
+        .music-controls {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .play-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        /* Easter Egg Hint */
+        .easter-egg-hint {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #666;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .letter-envelope {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            margin: 50px 0;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideIn 1.5s ease-out forwards;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes slideIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .letter-header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb3ba);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .letter-header::before {
+            content: '💕';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            animation: heartbeat 2s infinite;
+        }
+        
+        .letter-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            25% { transform: translateX(-50%) scale(1.3); }
+            50% { transform: translateX(-50%) scale(1.1); }
+            75% { transform: translateX(-50%) scale(1.4); }
+        }
+        
+        .letter-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .letter-header .subtitle {
+            font-style: italic;
+            opacity: 0.95;
+            font-size: 1.1em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .letter-content {
+            padding: 60px 50px;
+            line-height: 1.9;
+            color: #333;
+            font-size: 1.05em;
+        }
+        
+        /* Voice Message */
+        .voice-message {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .voice-message h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .voice-message::before {
+            content: '🎤';
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .audio-player {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 16px;
+        }
+        
+        .audio-player:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .audio-note {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+        
+        /* Opening Section */
+        .opening-section {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-left: 6px solid #e17055;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .opening-section::before {
+            content: '⚠️';
+            font-size: 24px;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Photo Gallery */
+        .photo-gallery {
+            margin: 60px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px 10px 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .placeholder-img {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Clickable Sections */
+        .click-to-reveal {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 192, 203, 0.6));
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 3px dashed #ff69b4;
+            margin: 40px 0;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1em;
+        }
+        
+        .click-to-reveal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .click-to-reveal:hover::before {
+            left: 100%;
+        }
+        
+        .click-to-reveal:hover {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.6), rgba(255, 192, 203, 0.8));
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+        }
+        
+        .hidden-message {
+            display: none;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+            animation: fadeInScale 1s ease-out;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotateX(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateX(0deg);
+            }
+        }
+        
+        .love-forever-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .stars-sand-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+        
+        .perfect-you-section {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
+        
+        .spicy-section {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+        }
+        
+        .trust-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+        
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 60px;
+            font-size: 1.3em;
+            color: #666;
+            position: relative;
+        }
+        
+        .signature::before {
+            content: '💋';
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            font-size: 20px;
+            animation: kiss 3s infinite;
+        }
+        
+        @keyframes kiss {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(5deg); }
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .heart {
+            color: #ff69b4;
+            font-size: 24px;
+            animation: floatUp 4s linear infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-50vh) rotate(180deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg) scale(0.8);
+            }
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ff6b6b 0%, #ff8e53 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+        
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confettiFall 3s linear forwards;
+            z-index: 9999;
+        }
+        
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Background -->
+    <div class="parallax-container">
+        <div class="parallax-bg"></div>
+        <div class="stars" id="stars"></div>
+        <div class="floating-particles" id="particles"></div>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-message" id="progressMessage">Keep going baby! ❤️</div>
+    
+    <!-- Music Visualizer -->
+    <div class="visualizer-container">
+        <div class="visualizer" id="visualizer"></div>
+        <div class="music-controls">
+            <div>Super Trouper 🎵</div>
+            <button class="play-btn" onclick="toggleMusic()">Play Music</button>
+        </div>
+    </div>
+    
+    <!-- Easter Egg Hint -->
+    <div class="easter-egg-hint">
+        💡 Type "iloveyou" for a surprise!
+    </div>
+    
+    <div class="container">
+        <div class="letter-envelope">
+            <div class="letter-header">
+                <h1>HAPPY THREE MONTHS BABY!!!</h1>
+                <div class="subtitle">Get ready to get cringed out ✨</div>
+            </div>
+            
+            <div class="letter-content">
+                <!-- Voice Message -->
+                <div class="voice-message">
+                    <h3>Before you start reading... 💕</h3>
+                    <p>I recorded a little message for you</p>
+                    <div class="audio-player" onclick="playVoiceMessage()">
+                        ▶️ Click to play voice message
+                    </div>
+                    <div class="audio-note">
+                        (Add your voice1.mp3 file to the same folder as this HTML)
+                    </div>
+                </div>
+                
+                <!-- PS Section -->
+                <div class="opening-section">
+                    <strong>PS: Reader Advisory Warning 🚨</strong><br><br>
+                    <p>I initially planned on sending you this in an actual letter but I thought it would be better and more wholesome to make it on this website itself (Read it alone because it most definitely isn't PG-13. But- I swear I tried my best and it is wholesome in most places)</p>
+                </div>
+
+                <!-- Do You Love Me Game -->
+                <div style="background: linear-gradient(135deg, #ff9a9e, #fecfef); padding: 60px 40px; border-radius: 20px; margin: 60px 0; text-align: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); position: relative; overflow: hidden; min-height: 400px;">
+                    <h2 style="font-size: 2.5em; margin-bottom: 30px; color: #333;">Do You Love Me? 💕</h2>
+                    <p id="questionText" style="font-size: 1.2em; color: #666; margin-bottom: 50px;">Click your answer below...</p>
+                    
+                    <div style="position: relative; height: 200px;">
+                        <button id="yesBtn" onclick="clickedYes()" style="background: linear-gradient(135deg, #ff6b6b, #ff8e8e); color: white; border: none; padding: 20px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-family: 'Georgia', serif; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);">
+                            YES! ❤️
+                        </button>
+                        
+                        <button id="noBtn" onmouseover="runAway()" onclick="tryClickNo()" style="background: #ddd; color: #666; border: none; padding: 20px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-family: 'Georgia', serif; font-weight: bold; position: absolute; left: 50%; transform: translateX(-50%); margin-top: 20px; transition: all 0.3s ease;">
+                            No
+                        </button>
+                    </div>
+                    
+                    <div id="responseMessage" style="display: none; margin-top: 40px; font-size: 1.5em; color: #ff6b6b; font-weight: bold; animation: fadeInScale 0.8s ease-out;"></div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 50px 40px; border-radius: 20px; margin: 60px 0; text-align: center; color: white; box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);">
+                    <h2 style="font-size: 2em; margin-bottom: 10px;">Days Until I See You Again ❤️</h2>
+                    <p style="opacity: 0.9; margin-bottom: 30px;">Counting down to November 25th...</p>
+                    <div id="countdown" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 20px 30px; border-radius: 15px; min-width: 100px;">
+                            <div id="days" style="font-size: 3em; font-weight: bold;">0</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Days</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 20px 30px; border-radius: 15px; min-width: 100px;">
+                            <div id="hours" style="font-size: 3em; font-weight: bold;">0</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Hours</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 20px 30px; border-radius: 15px; min-width: 100px;">
+                            <div id="minutes" style="font-size: 3em; font-weight: bold;">0</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Minutes</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 20px 30px; border-radius: 15px; min-width: 100px;">
+                            <div id="seconds" style="font-size: 3em; font-weight: bold;">0</div>
+                            <div style="font-size: 0.9em; opacity: 0.9;">Seconds</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 30px; font-size: 1.2em; opacity: 0.9;">Can't wait to hold you again 💕</p>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="photo-gallery" style="display: none;">
+                    <h2 class="gallery-title">Our Moments Together 📸</h2>
+                    <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                        Hover over each photo to see the memory
+                    </p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 1<br>Replace with:<br>photo1.jpg</div>
+                            <div class="gallery-caption">Your beautiful smile that day ✨</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 2<br>Replace with:<br>photo2.jpg</div>
+                            <div class="gallery-caption">When you made me laugh so hard 😂</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 3<br>Replace with:<br>photo3.jpg</div>
+                            <div class="gallery-caption">I love this picture of us 💕</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 4<br>Replace with:<br>photo4.jpg</div>
+                            <div class="gallery-caption">You looked absolutely stunning 😍</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 5<br>Replace with:<br>photo5.jpg</div>
+                            <div class="gallery-caption">One of my favorite moments ever ❤️</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 6<br>Replace with:<br>photo6.jpg</div>
+                            <div class="gallery-caption">I can't stop staring at you here 👀</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 7<br>Replace with:<br>photo7.jpg</div>
+                            <div class="gallery-caption">This memory makes me smile 😊</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="placeholder-img">Photo 8<br>Replace with:<br>photo8.jpg</div>
+                            <div class="gallery-caption">Perfect moment captured 📸</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Love Jar -->
+                <div style="margin: 60px 0; text-align: center;">
+                    <div style="background: linear-gradient(135deg, #a8edea, #fed6e3); padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+                        <h2 style="color: #333; margin-bottom: 10px;">Reasons I Love You Jar 💕</h2>
+                        <p style="color: #666; margin-bottom: 30px;">Click the jar to pull out a reason!</p>
+                        
+                        <div style="width: 220px; height: 30px; background: rgba(139, 69, 19, 0.3); border-radius: 10px; margin: 0 auto 10px; border: 2px solid rgba(139, 69, 19, 0.5);"></div>
+                        
+                        <div onclick="pullReason()" style="width: 200px; height: 250px; background: rgba(255, 255, 255, 0.3); border: 3px solid rgba(255, 255, 255, 0.5); border-radius: 10px 10px 30px 30px; margin: 0 auto 30px; position: relative; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                            ❤️
+                        </div>
+                        
+                        <div id="reasonNote" style="display: none; background: #fff9c4; padding: 25px; border-radius: 10px; margin: 20px auto; max-width: 500px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); font-style: italic; color: #333; font-size: 1.1em; animation: unfold 0.5s ease-out;"></div>
+                        
+                        <p style="font-size: 14px; color: #666; margin-top: 20px;">
+                            <span id="reasonCount">0</span> reasons pulled so far ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 1 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'intimateMessage')">
+                    Things I think about when I should be paying attention
+                </div>
+                
+                <div class="hidden-message spicy-section" id="intimateMessage">
+                    <p>I have never told you this, but you don't know how many times I sit and imagine little scenarios of us in my head. Basic things like watching movies in movie halls (but we kiss each time the hero appears on the screen). None of us would have a damn idea of what the movie is because we (at least I) would be too busy staring at you and those boobs that always somehow stare back at me. I knew you thought this would be PG-13 but I will try to keep the horniness to a low. Basic things like cuddling except my hard as hell dick is pressed against you begging to be let in. MAKING OUT, smiling, hickey, blushing and then a whole lot of item #1 again. Basic things like deep conversations where we speak but I get distracted by your perfect huge boobs and neck and start to uncontrollably smile and suck both of them. Basic things like holding your hand but then later holding the vagina open too.</p>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'secretMessage')">
+                    The answer to your impossible question
+                </div>
+                
+                <div class="hidden-message love-forever-section" id="secretMessage">
+                    <p>You asked me why I love you and I didn't really have an answer but I do now. I don't know how to tell you I love you. Perhaps because three words can never exactly justify how I feel for you. But i can certainly try:</p>
+                    
+                    <p style="text-align: center; font-style: italic; margin: 30px 0;">(It sounds like a bad rom-com but since I have sat down to write it you should read it)</p>
+                    
+                    <p><span class="highlight">I love you because you actually put effort into me.</span> I love you because no one has ever given me the love you give me and you are the only one who makes me feel this way. I love you because you always make me feel like I am worth something. I love you because when I'm having a bad day all I can think about is when to call her so that everything feels just right. I don't say I love you, and I dont think I have said it to many people in my life. But with you, it seems so natural that not ending a call with it seems weird, not filling in the gaps of conversations with it feels weird and not hearing it back feels weird. If its not clear yet, <span class="highlight">I love you baby. More than anyone can, anyone has or anyone will.</span></p>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'yearsMessage')">
+                    Six years of questionable life choices that led to this
+                </div>
+                
+                <div class="hidden-message stars-sand-section" id="yearsMessage">
+                    <p>Although its officially been two months, I have been dreaming of this for six years. I don't think I have ever loved someone as much as I have ever loved you. But its not roses or romance or candlelit dinners that I am talking about. Its about how your presence literally means everything to me. From being the person I call with good news first to the one I call with bad news too to the person I text because I just feel like it. In 6 years you have seen 2948474 versions of me, some good, some bad, maybe some even potentially horrible. But despite that since you still choose to love me, thats why this runs so deep and strong.</p>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'unbreakableMessage')">
+                    Proof we're not going anywhere
+                </div>
+                
+                <div class="hidden-message perfect-you-section" id="unbreakableMessage">
+                    <p>One thing I know for a fact is that we are not built on conditions. We are not fragile and we are not temporary. For me its the kind of love that allows me to grow while being in love. Constant, steady, HEALTHY, undeniable. Even when the months change into years I don't think the statement "I have never loved anyone as much as I have loved you nor will I ever do" will ever not be true.</p>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'finalMessage')">
+                    Warning: contains explicit caring
+                </div>
+                
+                <div class="hidden-message spicy-section" id="finalMessage">
+                    <p>Baby, you don't know how bad my urge is to take care of you, hold you until you fall asleep, kiss you while you sleep, wake you up with me eating you out, be your number one supporter, be the reason why the makeup concealer bottle finishes every month, be the reason the boob get hard randomly and the vagina dripping soaking wet.</p>
+                </div>
+
+                <div style="text-align: center; margin: 60px 0; padding: 40px; background: linear-gradient(135deg, #ffecd2, #fcb69f); border-radius: 20px;">
+                    <h2 style="color: #333; margin-bottom: 20px;">✨ 3 MONTH UPDATE ✨</h2>
+                    <p style="color: #666;">Here's what else I wanted to tell you...</p>
+                </div>
+
+                <!-- NEW Section 6 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'loveForeverMsg')">
+                    The one thing I absolutely love about you
+                </div>
+                
+                <div class="hidden-message love-forever-section" id="loveForeverMsg">
+                    <p>If there is one thing I love about you, it is the fact that you never give up and are never gonna give up no matter what. I love you baby, more.</p>
+                    <p>Although it means I love you more than you do, it also means that I love you more than the hard days to come. I love you more than the arguments that we are gonna have. I love you more than the distance that could ever separate us and the miscommunications that we have. I love you more than anyone who could try to come between us because I love you more than anything. <span class="highlight">I love you with my entire life.</span></p>
+                </div>
+
+                <!-- NEW Section 7 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'starsSandMsg')">
+                    You love stars, so let me talk about them too
+                </div>
+                
+                <div class="hidden-message stars-sand-section" id="starsSandMsg">
+                    <p>You always talk about stars, so let me too.</p>
+                    <p><span class="highlight">See the stars. Count them and thats how many years I wanna spend with you</span></p>
+                    <p>See the grains of sand. Each one represents the number of kisses I want from you (A million are still pending btw)</p>
+                    <p>See the leaves on each tree. Even they are too few to count how many times I wanna tell you that I love you.</p>
+                </div>
+
+                <!-- NEW Section 8 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'perfectYouMsg')">
+                    Everything I find in you
+                </div>
+                
+                <div class="hidden-message perfect-you-section" id="perfectYouMsg">
+                    <p>In you, I find everything I want. You are beautiful, caring, giving, gentle, sexy, hot, delicious, intelligent and most of all MINE. I love you and have loved you since day one and the day i saw you my heart has fallen for you and never recovered. Its so cool that I finally get to live out my dream and date my crush (not bad for me right). You always make me smile and laugh no matter what. Just talking to you makes my day 100x better. Every time I think something is wrong, all I think is us making out right after I asked you out on the 2nd hole (its sad we couldn't go 2nd there; get it).</p>
+                    <p>Falling in you was not planned at all, baby. But it turned out to be the most perfect thing. I see how much effort you put into me and us and its so wonderful and perfect. I sometimes wonder what I did right to deserve you and your love. I overthink because of how perfect and lovely and gorgeous you are baby. But I know I can always come to you and speak to you. After all, the only person I speak to about you is you yourself baby. Not a single hour goes by when I dont think about you baby. I dont think words are enough to express how much I love you. I never thought I could be this happy and this close with someone. I cant wait to see you, hold you and tell me how much I love you. And then fuck you. Hard. Completely. Until your legs shake and until we are out of breath. Until we collapse on each other and have the best sleep of our lives. <span class="highlight">Youre not just someone I want to be with baby. You are the one person who I never want to be without.</span></p>
+                </div>
+
+                <!-- NEW Section 9 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'spicyMsg')">
+                    Our new routine that I'm obsessed with
+                </div>
+                
+                <div class="hidden-message spicy-section" id="spicyMsg">
+                    <p>Okay now too much emo. I love this new routine of ours. Its so attractive because I really love hearing your voice get raspier, your breath getting shallower and your cheeks flushing. I love hearing you moan thinking about me and what November holds for us. Hearing you whine and moan makes it even better. I cant wait for my hand and dick to replace your fingers. The drool falling off from your mouth caught by my tongue. I want to feel you clench around my hand so badly when you're almost there and just need me. I want to fuck you so that you know I am yours and you are mine and we can be as close as emotionally and physically possible.</p>
+                </div>
+
+                <!-- NEW Section 10 -->
+                <div class="click-to-reveal" onclick="revealSecret(this, 'trustMsg')">
+                    My promise to stop being an idiot about things
+                </div>
+                
+                <div class="hidden-message trust-section" id="trustMsg">
+                    <p>You asked me to not worry about Arnav and now I genuinely don't. I am just glad that you are the best girlfriend to exist and that you would do nothing wrong. I am glad that I can trust you and safely without thinking twice about seeing you spend time with him. I love you baby. Slowly but surely I will stop these screw-ups and mishaps. I will get better. I promise.</p>
+                </div>
+                
+                <div class="signature">
+                    All my love, forever yours ❤️
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <script>
+        // Love reasons array - specific to your relationship
+        const loveReasons = [
+            "You never give up no matter what",
+            "You actually put effort into me and us",
+            "You make me feel like I'm worth something",
+            "Just talking to you makes my day 100x better",
+            "You're the only person I speak to about you",
+            "Your voice gets raspier when you're turned on",
+            "The way you moan thinking about me",
+            "How you always choose to love me despite seeing all versions of me",
+            "You're beautiful, caring, giving, gentle, sexy, hot, delicious, intelligent and MINE",
+            "You make me smile and laugh no matter what",
+            "I get to live out my dream and date my crush",
+            "You're the one person who I never want to be without",
+            "The effort you put into me and us is wonderful and perfect",
+            "You make every ordinary moment extraordinary",
+            "Your presence literally means everything to me",
+            "You're the person I call with good news first",
+            "You're the person I call with bad news too",
+            "In 6 years you've seen all versions of me and still choose me",
+            "You let me grow while being in love",
+            "Our love is constant, steady, HEALTHY, undeniable",
+            "You're not fragile and we're not temporary",
+            "You always make me feel safe and loved",
+            "The way your breath gets shallower when we talk",
+            "How your cheeks flush during our calls",
+            "You're the best girlfriend to exist",
+            "I can trust you completely and safely",
+            "You understand me like no one else does",
+            "Your perfect huge boobs that always stare back at me",
+            "The way you whine and moan for me",
+            "How you make distance feel less painful",
+            "You substitute physical touch with words so beautifully",
+            "Your texts feel like hugs in disguise",
+            "You give me reasons to love harder",
+            "You make me want to be better every day",
+            "My heart fell for you and never recovered"
+        ];
+        
+        let reasonsPulled = 0;
+        let pulledReasons = [];
+        
+        function pullReason() {
+            if (pulledReasons.length === loveReasons.length) {
+                pulledReasons = [];
+            }
+            
+            let availableReasons = loveReasons.filter((r, i) => !pulledReasons.includes(i));
+            let randomIndex = Math.floor(Math.random() * availableReasons.length);
+            let reason = availableReasons[randomIndex];
+            let originalIndex = loveReasons.indexOf(reason);
+            pulledReasons.push(originalIndex);
+            
+            const noteElement = document.getElementById('reasonNote');
+            noteElement.textContent = reason;
+            noteElement.style.display = 'block';
+            
+            reasonsPulled++;
+            document.getElementById('reasonCount').textContent = reasonsPulled;
+            
+            createMassiveHeartExplosion();
+            
+            setTimeout(() => {
+                noteElement.style.display = 'none';
+            }, 5000);
+        }
+        
+        // "Do You Love Me?" Game
+        let noBtnClickCount = 0;
+        let yesClicked = false;
+        
+        function runAway() {
+            if (yesClicked) return;
+            
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const container = noBtn.parentElement;
+            
+            // Make Yes button bigger
+            const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize + 5) + 'px';
+            yesBtn.style.padding = (20 + noBtnClickCount * 2) + 'px ' + (40 + noBtnClickCount * 4) + 'px';
+            
+            // Make No button smaller and move it
+            const newSize = Math.max(12, 20 - noBtnClickCount * 2);
+            noBtn.style.fontSize = newSize + 'px';
+            noBtn.style.padding = Math.max(8, 20 - noBtnClickCount * 2) + 'px ' + Math.max(15, 40 - noBtnClickCount * 4) + 'px';
+            
+            // Random position for No button
+            const maxX = container.offsetWidth - noBtn.offsetWidth - 40;
+            const maxY = container.offsetHeight - noBtn.offsetHeight - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.transform = 'none';
+            
+            noBtnClickCount++;
+            
+            // Update question text
+            const messages = [
+                "Are you sure? 🥺",
+                "Really? Think again... 💔",
+                "You're breaking my heart baby 😢",
+                "Come on, you know you do... 💕",
+                "The Yes button is right there! 👀",
+                "Stop playing hard to get 😏",
+                "I know you love me 😘",
+                "Just click Yes already! ❤️",
+                "You're making this difficult 🙈",
+                "Fine, I'll just make Yes bigger 💪"
+            ];
+            
+            if (noBtnClickCount <= messages.length) {
+                document.getElementById('questionText').textContent = messages[noBtnClickCount - 1];
+            }
+            
+            // After 10 attempts, make No button impossible to see
+            if (noBtnClickCount >= 10) {
+                noBtn.style.opacity = '0';
+                noBtn.style.pointerEvents = 'none';
+                document.getElementById('questionText').textContent = "Okay fine, there's only one option left 😏";
+            }
+        }
+        
+        function tryClickNo() {
+            if (!yesClicked) {
+                runAway();
+            }
+        }
+        
+        function clickedYes() {
+            if (yesClicked) return;
+            yesClicked = true;
+            
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const questionText = document.getElementById('questionText');
+            const responseMessage = document.getElementById('responseMessage');
+            
+            noBtn.style.display = 'none';
+            yesBtn.style.display = 'none';
+            questionText.style.display = 'none';
+            
+            responseMessage.innerHTML = "I love you more baby 💕<br><br>Now keep reading below... 👇";
+            responseMessage.style.display = 'block';
+            
+            // Massive confetti explosion
+            triggerConfetti();
+            createMassiveHeartExplosion();
+        }
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('November 25, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<h2 style='font-size: 2em;'>I'M WITH YOU NOW! ❤️</h2>";
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Progress bar
+        function updateProgressBar() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            const messageEl = document.getElementById('progressMessage');
+            if (progress > 80) {
+                messageEl.textContent = "Almost there baby! 💕";
+                messageEl.classList.add('show');
+            } else if (progress > 50) {
+                messageEl.textContent = "You're doing amazing! ❤️";
+                messageEl.classList.add('show');
+            } else if (progress > 20) {
+                messageEl.textContent = "Keep going gorgeous! 😘";
+                messageEl.classList.add('show');
+            } else {
+                messageEl.classList.remove('show');
+            }
+            
+            // Trigger confetti at the end
+            if (progress > 95 && !window.confettiTriggered) {
+                window.confettiTriggered = true;
+                triggerConfetti();
+            }
+        }
+        
+        window.addEventListener('scroll', updateProgressBar);
+        
+        // Music visualizer
+        function createVisualizer() {
+            const visualizer = document.getElementById('visualizer');
+            for (let i = 0; i < 12; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = Math.random() * 40 + 'px';
+                bar.style.animationDelay = (i * 0.1) + 's';
+                bar.style.animationDuration = (Math.random() * 0.5 + 0.3) + 's';
+                visualizer.appendChild(bar);
+            }
+        }
+        
+        let musicPlaying = false;
+        let audioElement = null;
+        
+        function toggleMusic() {
+            musicPlaying = !musicPlaying;
+            const btn = document.querySelector('.play-btn');
+            
+            if (musicPlaying) {
+                btn.textContent = 'Pause Music';
+                if (!audioElement) {
+                    audioElement = new Audio('super-trouper.mp3');
+                    audioElement.loop = true;
+                }
+                audioElement.play();
+            } else {
+                btn.textContent = 'Play Music';
+                if (audioElement) {
+                    audioElement.pause();
+                }
+            }
+            
+            // Animate visualizer bars
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                bar.style.animationPlayState = musicPlaying ? 'running' : 'paused';
+            });
+        }
+        
+        // Voice message player
+        function playVoiceMessage() {
+            const voiceAudio = new Audio('voice1.mp3');
+            voiceAudio.play().catch(err => {
+                alert('Voice message would play here!\n\nTo add your voice:\n1. Record your message\n2. Save as voice1.mp3\n3. Place in same folder as this HTML file');
+            });
+        }
+        
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const stars = document.getElementById('stars');
+            const particles = document.getElementById('particles');
+            
+            if (stars) stars.style.transform = `translateY(${scrolled * 0.5}px)`;
+            if (particles) particles.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+        
+        // Reveal secret sections
+        function revealSecret(element, messageId) {
+            const secretMessage = document.getElementById(messageId);
+            secretMessage.style.display = 'block';
+            element.style.display = 'none';
+            createMassiveHeartExplosion();
+        }
+        
+        // Heart explosion
+        function createMassiveHeartExplosion() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const heartTypes = ['💖', '💕', '💗', '💓', '💝', '💘', '❤️', '💋'];
+            
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.bottom = '0px';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 150);
+            }
+        }
+        
+        // Confetti explosion
+        function triggerConfetti() {
+            const colors = ['#ff6b6b', '#ff8e8e', '#ffb3ba', '#ffd93d', '#6bcf7f', '#4d96ff'];
+            
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 30);
+            }
+        }
+        
+        // Easter egg - secret code
+        let secretCode = '';
+        const correctCode = 'iloveyou';
+        
+        document.addEventListener('keypress', (e) => {
+            secretCode += e.key.toLowerCase();
+            if (secretCode.length > correctCode.length) {
+                secretCode = secretCode.slice(-correctCode.length);
+            }
+            
+            if (secretCode === correctCode) {
+                alert('🎉 SECRET UNLOCKED! 🎉\n\nYou found the easter egg baby!\nI love you more than words can say ❤️');
+                triggerConfetti();
+                secretCode = '';
+            }
+        });
+        
+        // Interactive hearts on click
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('click-to-reveal') || 
+                e.target.classList.contains('audio-player') ||
+                e.target.classList.contains('play-btn')) return;
+            
+            const heartTypes = ['💕', '💖', '💗', '💝'];
+            const heart = document.createElement('div');
+            heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.fontSize = '24px';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'floatUp 3s linear forwards';
+            heart.style.zIndex = '1000';
+            heart.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 3000);
+        });
+        
+        // Initialize everything
+        window.addEventListener('load', () => {
+            createStars();
+            createParticles();
+            createVisualizer();
+            
+            // Periodic heart rain
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💕';
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = '-20px';
+                    heart.style.fontSize = '20px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.animation = 'floatUp 4s linear forwards';
+                    heart.style.zIndex = '5';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 4000);
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
